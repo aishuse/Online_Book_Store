@@ -1,0 +1,60 @@
+{%extends 'customer/basecust.html'%}
+
+{%load static%}
+
+
+{% block body_block %}
+
+<div class="container my-4">
+    <div class="jumbotron">
+
+        <div class="row">
+            <center>
+                {% if messages %}
+                <div class="alert alert-success" style="width:200px; height:50px;">
+                    {% for message in messages %}
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <div class="">{{ message }}<i class="fas fa-check-circle"></i></div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </center>
+        </div>
+
+        <h1 class="display-4">Request For A Book</h1>
+        <p class="lead">If you want to buy a book which is not available in the list of books then you can simply fill
+            the below details. We will try to make it available in sometime.<br> <br> Thankyou and Have a nice day!!</p>
+    </div>
+
+    <div class="container">
+        <form action="" method="POST"> {% csrf_token %}
+            <input type="text" name="book_name" id="book_name" placeholder="Book Name">
+            &nbsp;&nbsp;&nbsp; <input type="text" name="author" id="author" placeholder="Book Author">
+            &nbsp;&nbsp;&nbsp;
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
+            integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    {% endblock %}
+
+
+    {% block js %}
+    <script>
+     {% if thank %}
+alert('We will contact you soon');
+document.location = "/for_users/"
+{% endif %}
+
+
+    </script>
+    {% endblock %}
+
+
+
+

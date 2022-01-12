@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+{%extends 'seller/baseadmin.html'%}
+
+{%load static%}
+
+
+  {% block body_block %}
+
+
+
+<form class="mt-5 ms-5" action="" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button value="add" type="submit">update BOOK</button>
+</form>
+
+  {% endblock %}

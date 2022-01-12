@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+{%extends 'seller/baseadmin.html'%}
+
+{%load static%}
+
+
+{% block body_block %}
+
+<div class="container mt-5 ms-5">
+
+
+    <h2 style="color:red;">OUT OF STOCK ( {{books.count}} )</h2>
+    <hr>
+
+    <ol>
+         {%for book in books%}
+
+        <li class="mt-4 ps-3 " style="font-size:25px">
+            {{book.name}}
+            <a href="{%url 'stockadd' %}" class="btn btn-primary ms-5">add stock</a>
+
+        </li>
+        {%endfor%}
+    </ol>
+
+</div>
+
+
+{%endblock%}

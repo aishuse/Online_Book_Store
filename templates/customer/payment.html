@@ -1,0 +1,23 @@
+
+
+{% extends 'customer/basecust.html'%}
+{%block body_block%}
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+                <img src="https://st.depositphotos.com/1001911/1554/v/600/depositphotos_15540341-stock-illustration-thumb-up-emoticon.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-check" style="color:green"> Payment Complete </i></h5>
+                    <p class="card-text">Your payment is successful.</p>
+                    <a href="{%url 'viewmyorder'%}" class="btn btn-warning">Order History</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+{%endblock%}

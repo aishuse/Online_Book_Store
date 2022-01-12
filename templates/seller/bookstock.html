@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+{%extends 'seller/baseadmin.html'%}
+
+{%load static%}
+
+
+  {% block body_block %}
+
+<div class="mt-5 ms-5">
+    <h2 class="" style="color: red">Book Stocks History</h2>
+            <hr>
+
+
+<table class="table table-bordered" border="2px">
+      <tr>
+        <th>Book</th>
+        <th>Stock Added</th>
+        <th>Date</th>
+      </tr>
+
+{%for stock in stocks%}
+<tr>
+    <td>{{stock.book}}</td>
+    <td>{{stock.stock_available}}</td>
+    <td> {{stock.created_date}}</td>
+
+</tr>
+
+
+{%endfor%}
+</table>
+
+</div>
+
+  {% endblock %}
+
+

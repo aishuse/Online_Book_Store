@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+{%extends 'seller/baseadmin.html'%}
+
+{%load static%}
+
+
+  {% block body_block %}
+
+<h2 class="mt-5 ms-5" style="color: red"> Add a Book</h2>
+<hr>
+
+<form class="mt-5 ms-5" action="" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button value="add" type="submit">ADD BOOK</button>
+</form>
+
+
+  {% endblock %}

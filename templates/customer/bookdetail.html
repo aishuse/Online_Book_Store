@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+{%extends 'customer/basecust.html'%}
+
+{%load static%}
+
+
+{% block body_block %}
+
+<div class="container mt-5">
+    <div class="row">
+
+        {%if books.stock == 0%}
+
+
+        <div class="col-md-4">
+            <img src="{{books.image.url}}" width="100%" height="500px" alt="">
+        </div>
+
+        <div class="col-md-8">
+            <div class="row">
+                <div class="bdetail">
+                    <h1 style="color:purple"> {{books.name}}</h1>
+                    <h4 class="ps-4"> -{{books.author}}</h4>
+                </div>
+                <hr>
+                <div class="col-md-4">
+                    <h3 style="color:red">&#8377;{{books.price}}</h3> Stock : {{books.stock}}
+                </div>
+                <div class="bdetail">
+                    <span style="color:red;">Out of stock</span>
+
+                </div>
+            </div>
+            <h5 class="mt-5" style="color:blue ;">Book Details:</h5>
+
+            <div class="bdetail card p-3 mt-3">
+                <table>
+                    <tr>
+                        <td class="bookdetail">Category:</td>
+                        <td>{{books.category}}</td>
+                    </tr>
+                    <tr>
+                        <td class="bookdetail">Publisher:</td>
+                        <td>{{books.publisher}}</td>
+                    </tr>
+                     <tr>
+                        <td class="bookdetail">Language:</td>
+
+                        <td>{{books.language}}</td>
+                    </tr>
+
+                     <tr>
+                        <td class="bookdetail">Country of Origin:</td>
+
+                        <td>{{books.country_of_origin}}</td>
+                    </tr>
+                </table>
+                <i class="mt-2"> {{books.details}}</i>
+            </div>
+        </div>
+
+
+        {%else%}
+
+        <div class="col-md-4">
+            <img src="{{books.image.url}}" width="100%" height="500px" alt="">
+        </div>
+
+        <div class="col-md-8">
+            <div class="row">
+                <div class="bdetail">
+                    <h1 style="color:purple"> {{books.name}}</h1>
+                    <h4 class="ps-4"> -{{books.author}}</h4>
+                </div>
+
+                <hr>
+                <div class="col-md-4">
+                    <h3 style="color:red">&#8377;{{books.price}}</h3> Stock : {{books.stock}}
+                </div>
+                <div class="bdetail" style="">
+                    <a href="{%url 'addtocart' books.pk%}" class="btn btn-primary">ADD to cart</a>
+
+                </div>
+
+            </div>
+            <h5 class="mt-5" style="color:blue ;">Book Details:</h5>
+
+            <div class="bdetail card p-3 mt-3">
+                <table>
+                    <tr>
+                        <td class="bookdetail">Category:</td>
+                        <td>{{books.category}}</td>
+                    </tr>
+                    <tr>
+                        <td class="bookdetail">Publisher:</td>
+                        <td>{{books.publisher}}</td>
+
+
+                    </tr>
+                   <tr>
+                        <td class="bookdetail">Language:</td>
+
+                        <td>{{books.language}}</td>
+                    </tr>
+
+                     <tr>
+                        <td class="bookdetail">Country of Origin:</td>
+
+                        <td>{{books.country_of_origin}}</td>
+                    </tr>
+
+                </table>
+
+
+                <i class="mt-2" style="font-size:20px"> {{books.details}}</i>
+
+            </div>
+
+        </div>
+
+
+        {%endif%}
+
+    </div>
+
+</div>
+{% endblock %}

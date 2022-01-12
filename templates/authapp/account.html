@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+{%extends 'authapp/base1.html'%}
+
+{%load static%}
+
+
+{% block body_block %}
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="HerorightBox">
+                <div class="circle1">
+                    <div class="circle3">
+                        <div class="circle2">
+                            <img src="{%static 'images/open-book.png' %}" alt="" width="100%" height="90%">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+
+            <div class="multisignup">
+
+
+                <p class="multisignup">
+                    If you already have an account, go ahead and
+                    <button type="button" class="btn btn-primary"><a class="multisignup" href="{% url 'login' %}">Log in
+                        here.</a></button>
+                    <br><br><br>
+                    Get started by creating a
+                    <button type="button" class="btn btn-secondary"><a class="multisignup"
+                                                                       href="{% url 'customersignup' %}">Customer
+                        Account</a></button>
+
+                    or
+                    <button type="button" class="btn btn-secondary"><a class="multisignup"
+                                                                       href="{% url 'sellersignup'%}">Seller Account</a>
+                    </button>
+                    .
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
+

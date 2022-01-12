@@ -1,0 +1,36 @@
+{% extends 'customer/basecust.html'%}
+{%block body_block%}
+<div class="container">
+    <div class="col-12">
+        <div class="row mt-5">
+            <h1 class="display-4">Make your payment Here!</h1>
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h6>Your cart total is  &#8377; {{total}} </i>.</h6>
+                </div>
+            </div>
+            <div class="card mt-5">
+                <div class="card-body">
+                    <form action="{%url 'payment'%}" method="POST">
+                        {%csrf_token%}
+                        <i class="far fa-credit-card   " style="width:50px; height:25px;"></i>
+                        <i class="fab fa-cc-visa  " style="width:50px; height:25px;"></i>
+                        <i class="fab fa-cc-mastercard  " style="width:50px; height:25px;"></i>
+
+                        <script src="http://checkout.stripe.com/checkout.js" class="stripe-button"
+                                data-key="{{key}}"
+                                data-currency="INR"
+                                data-description="Payment Gateway"
+                                data-amount={{amount}}
+                                data-locale="auto">
+
+                        </script>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+{%endblock%}

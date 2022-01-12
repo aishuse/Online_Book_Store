@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+{%extends 'customer/basecust.html'%}
+
+{%load static%}
+
+
+{% block body_block %}
+
+<div class="container CartItem">
+    <div class="row">
+        <!--        <h1>{{items.count}}</h1>-->
+
+        {%if items.count == 0 %}
+
+        <div class="mt-5 ms-5">
+            <h1><span style="color:red;">Cart Empty</span></h1>
+
+        </div>
+
+        {%else%}
+        <h2 class="mt-2 ms-3 display-4" style="color: red"> Cart</h2>
+
+        {%for book in items%}
+
+        <div class="col-md-8">
+            <div class="orderBox">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="cart-img">
+                            <img src="{{book.item.image.url}}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="cart-desc ">
+                            <h5 class="ms-5">Book Name : {{book.item.name}}</h5>
+                            <h5 class="ms-5">Author : {{book.item.author}}</h5>
+                            <h5 class="ms-5">Qty : <a href="{%url 'minus' book.id %}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-dash-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                </svg>
+                            </a> {{book.quantity}} <a href="{%url 'plus' book.id %}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                </svg>
+                            </a>
+                            </h5>
+
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="cart-del">
+                            <p class="">Price : {{book.item.price}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttonBox mt-2">
+                    <a href="{%url 'removeitem' book.pk %}" class="btn btn-primary">Remove</a>
+
+                </div>
+            </div>
+        </div>
+
+
+        {%endfor%}
+
+
+        <div class="col-md-4 cartSecod">
+            <div class="orderBox">
+                <h2 class="">Total Price</h2>
+                <p style="font-size: 30px;" class="">{{total}}</p>
+                <div><a href="{%url 'checkout' %}" class="btn btn-primary"
+                        style="margin-top:20px; background-color:#002b80;color:white;">Proceed to Checkout</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {%endif%}
+
+</div>
+
+
+{% endblock %}

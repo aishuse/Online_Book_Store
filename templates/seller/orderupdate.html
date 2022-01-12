@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+{%extends 'seller/baseadmin.html'%}
+
+{%load static%}
+
+
+{% block body_block %}
+<div class="container mt-5 ms-3">
+
+
+    <form action="" method="post">
+        {%csrf_token%}
+
+        {{form.as_p}}
+
+        <button type="submit">Update</button>
+
+</div>
+
+{% endblock %}
+
+
+
+

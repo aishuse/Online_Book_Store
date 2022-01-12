@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
+          integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/fontawesome.min.css"
+          integrity="sha512-U/gkPvaqpUI9k7UC1ivfLUO+hb1dPzQyWskzeYoDjZENrWvLVZ40mg510RvWsVP3YcuKW4lAkfxgU9khbNhTrg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="{%static 'css/styles.css'%}">
+    <title>Document</title>
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbarTransparent">
+    <div class="container">
+        <a class="navbar-brand" href="{%url 'home' %}">BookLand</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">
+                        <i class="far  fa-user-circle icolor"></i>&nbsp;{{request.user}}
+                    </a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="{%url 'custindex'%}"><i
+                        class="fas fa-home"></i>&nbsp;Home</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'contactus'%}"><i
+                            class="far fa-address-card"></i>Contact us</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'logout'%}"><i
+                            class="fas fa-sign-out-alt icolor"></i>&nbsp;Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-md-2 db-padd">
+            <div class="dashbard-left">
+                <div class="row">
+
+
+                    <div class="col-md-12">
+                        <div class="dashleft-2">
+                            <ul class="list-group">
+                                <li class="list-group-item "><a href="{%url 'books'%}"><i class="fas fa-list"></i>&nbsp;All
+                                    Books</a></li>
+
+                                <li class="list-group-item ">
+                                    <a href="{%url 'mycart'%}"><i
+                                            class="fas fa-shopping-cart icolor"></i>&nbsp;Cart</a>
+                                </li>
+                                <li class="list-group-item "><a href="{%url 'viewmyorder'%}"><i
+                                        class="fas fa-shopping-bag"></i>&nbsp;My Orders</a></li>
+
+                                <li class="list-group-item "><a href="{%url 'request_books'%}"><i
+                                        class="fas fa-book"></i>&nbsp;Request a Book</a></li>
+
+
+                                <li class="list-group-item "><a href="{%url 'filterbook'%}"><i
+                                        class="fas fa-search"></i>&nbsp;Search Books </a></li>
+
+                                     <li class="list-group-item "><a href="{%url 'categorylist'%}"><i
+                                        class="fas fa-list"></i>&nbsp;Book Categories </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-10">
+            <!--------------------------------------->
+            {%block body_block%}
+
+
+            {%endblock%}
+            <!--------------------------------------->
+        </div>
+    </div>
+
+    <div class="footer mt-5">
+
+        <h3>copyright</h3>
+
+    </div>
+
+</div>
+
+</body>
+</html>

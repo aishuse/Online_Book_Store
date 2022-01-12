@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+{%extends 'seller/baseadmin.html'%}
+{%load static%}
+{% block body_block %}
+
+<div class="container mt-5 ms-3">
+    <h2 class="" style="color: red">Add Stock</h2>
+    <hr>
+
+    <form action="" method="post" class="mt-2">
+        {%csrf_token%}
+        {{form.as_p}}
+        <button value="add" type="submit">ADD stock</button>
+
+    </form>
+</div>
+{% endblock %}

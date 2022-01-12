@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+{%extends 'seller/baseadmin.html'%}
+
+{%load static%}
+
+
+{% block body_block %}
+
+<div class="mt-5 ms-5">
+
+
+    <form action="" method="post">
+        {%csrf_token%}
+    <h3>Are you sure you want to delete {{delete_book.book_name}} </h3>
+
+                <a class="btn btn-warning" href="{%url 'mybooks'%}">Cancel</a>
+
+        <button class="btn btn-danger" type="submit">Delete</button>
+
+    </form>
+</div>
+{% endblock %}

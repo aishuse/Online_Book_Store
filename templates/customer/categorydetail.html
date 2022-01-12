@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+{%extends 'customer/basecust.html'%}
+
+{%load static%}
+
+
+{% block body_block %}
+
+<div class="container mt-5 ms-5">
+
+    {%if cat%}
+
+
+    <h3 class="display-4" style="color:red">View all Books in this category</h3>
+    <hr>
+
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Author</th>
+
+
+        </tr>
+        {%for category in cat%}
+        <tr>
+            <td>{{category.name}}</td>
+            <td>{{category.author}}</td>
+            <td><a class="btn btn-primary" href="{%url 'bookdetails' category.id%}">detail</a></td>
+
+        </tr>
+        {%endfor%}
+    </table>
+
+    {%else%}
+
+    <h1>Nothing to display</h1>
+
+    {%endif%}
+
+
+</div>
+{% endblock %}
