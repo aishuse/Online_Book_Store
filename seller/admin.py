@@ -5,7 +5,7 @@ class BookAdmin(admin.ModelAdmin):
     list_display = [
         'name', 'author', 'price', 'category', 'stock', 'user'
     ]
-    list_filter = ('name', 'author', 'user')
+    list_filter = ('name', 'author', 'user', 'category')
 
 
 class BookStockAdmin(admin.ModelAdmin):

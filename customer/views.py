@@ -4,9 +4,9 @@ from django.views.generic import ListView, DetailView, TemplateView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
+from django.contrib import messages
 from datetime import datetime, timedelta
 import stripe
-from django.contrib import messages
 
 from admins.models import Category
 from customer.forms import ContactFormEmail
@@ -235,7 +235,7 @@ class MyOrders(ListView):
         queryset = self.model.objects.filter(user=self.request.user)
         return queryset
 
-
+@login_required
 def request_books(request):
     if request.method == "POST":
         user = request.user
@@ -247,7 +247,7 @@ def request_books(request):
         return render(request, "customer/request_books.html")
     return render(request, "customer/request_books.html")
 
-
+@login_required
 def contactsendmail(request):
     if request.method == 'GET':
         form = ContactFormEmail()
@@ -259,11 +259,10 @@ def contactsendmail(request):
             message = form.cleaned_data['message']
             send_mail(subject, message, email, ['booklandz911@gmail.com', email])
             messages.success(request, 'message send')
-
             return redirect('contactus')
     return render(request, 'customer/contactpage.html', {'form': form})
 
-
+@login_required
 def bookSearchView(request):
     if request.method == "POST":
         query_name = request.POST.get('name', None)
@@ -273,12 +272,13 @@ def bookSearchView(request):
     return render(request, 'customer/searchbook.html')
 
 
+@method_decorator([login_required, customer_required], name='dispatch')
 class ListCategory(ListView):
     model = Category
     template_name ='customer/categorylist.html'
     context_object_name = 'category'
 
-
+@method_decorator([login_required, customer_required], name='dispatch')
 class Categories(ListView):
     model = Category
     template_name = 'customer/categorydetail.html'
@@ -287,9 +287,9 @@ class Categories(ListView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         obj = Category.objects.get(pk=self.kwargs['pk'])
-        # dept = self.get_object()
         cat = obj.category.all()
         context['cat'] = cat
+        context['obj'] = obj
         return context
 
 

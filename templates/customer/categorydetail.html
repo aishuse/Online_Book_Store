@@ -12,7 +12,7 @@
     {%if cat%}
 
 
-    <h3 class="display-4" style="color:red">View all Books in this category</h3>
+    <h3 class="display-4" style="color:red">View all Books in <i><span style="color:green;">{{obj.name}}.</span></i></h3>
     <hr>
 
     <table class="table">
@@ -23,10 +23,11 @@
 
         </tr>
         {%for category in cat%}
+
         <tr>
             <td>{{category.name}}</td>
             <td>{{category.author}}</td>
-            <td><a class="btn btn-primary" href="{%url 'bookdetails' category.id%}">detail</a></td>
+            <td><a class="btn btn-primary" href="{%url 'bookdetails' category.id%}">Detail</a></td>
 
         </tr>
         {%endfor%}
